@@ -67,18 +67,28 @@ FROM dbo.IMPIEGATI;
 
 --STORE PROCEDURE
 
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 
-CREATE PROCEDURE AggiungiImpiegato
+CREATE PROCEDURE [dbo].[AggiungiImpiegato2]
 
     @Cognome NCHAR(20),
     @Nome NCHAR(20),
+    @codiceFiscale CHAR(16),
     @Eta SMALLINT,
+    @RedditoMensile SMALLINT,
+    @DetrazioneFiscale CHAR(1),
+    @DataAssunzione DATETIME
+
     
 AS
 BEGIN
     SET NOCOUNT ON;
 
-    INSERT INTO dbo.IMPIEGATI (Nome, Cognome, [Eta ])
-    VALUES (@Cognome, @Nome, @Eta);
+    INSERT INTO dbo.IMPIEGATI (Nome, Cognome, [codiceFiscale], [Eta ], [RedditoMensile ], DetrazioneFiscale, DataAssunzione )
+    VALUES (@Cognome, @Nome, @codiceFiscale, @Eta, @RedditoMensile, @DetrazioneFiscale, @DataAssunzione);
 END
+GO
 
